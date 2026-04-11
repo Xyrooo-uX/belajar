@@ -15,59 +15,59 @@ function Dashboard() {
   useEffect(() => {
     axios
       .get("https://api.restful-api.dev/objects")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const addProduct = (e) => {
     e.preventDefault();
     if (newProductName.trim() === "") return;
 
-    const newEntry = {
-      id: Date.now().toString(), 
-      name: newProductName
+    const newEntry = { 
+      id: "local-" + Date.now(), 
+      name: newProductName 
     };
 
     setProducts([newEntry, ...products]);
     setNewProductName("");
+      
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Produk ditambahkan ke daftar lokal",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false
+    });
   };
 
   const deleteProduct = (id) => {
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: "bg-green-500 text-white px-4 py-2 rounded-lg mx-2",
-      cancelButton: "bg-red-500 text-white px-4 py-2 rounded-lg mx-2"
-    },
-    buttonsStyling: false
-  });
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "bg-green-500 text-white px-4 py-2 rounded-lg mx-2",
+        cancelButton: "bg-red-500 text-white px-4 py-2 rounded-lg mx-2"
+      },
+      buttonsStyling: false
+    });
 
-  swalWithBootstrapButtons.fire({
-    title: "Apakah kamu yakin?",
-    text: "Data akan di hapus!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Ya, hapus!",
-    cancelButtonText: "Batal",
-    reverseButtons: true
-  }).then((result) => {
-    if (result.isConfirmed) {
-      const updatedProducts = products.filter((item) => item.id !== id);
-      setProducts(updatedProducts);
-
-      swalWithBootstrapButtons.fire({
-        title: "Berhasil!",
-        text: "Data berhasil dihapus.",
-        icon: "success"
-      });
-    } else if (result.dismiss === Swal.DismissReason.cancel) {
-      swalWithBootstrapButtons.fire({
-        title: "Dibatalkan",
-        text: "Data gagal dihapus.",
-        icon: "error"
-      });
-    }
-  });
-};
+    swalWithBootstrapButtons.fire({
+      title: "Apakah kamu yakin?",
+      text: "Data akan di hapus!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Ya, hapus!",
+      cancelButtonText: "Batal",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setProducts(products.filter((item) => item.id !== id));
+        swalWithBootstrapButtons.fire("Berhasil!", "Data dihapus.", "success");
+      }
+    });
+  };
 
   const filteredProducts = products.filter((item) =>
     item.name?.toLowerCase().includes(search.toLowerCase())
@@ -91,11 +91,11 @@ function Dashboard() {
     <div className="min-h-screen bg-gray-100">
       <div className="p-10">
         <Navbar />
-        <h1 className="text-3xl font-bold mb-6 text-center text-blue-700 pt-5">
+        <h1 className="text-3xl font-bold mb-6 text-center text-blue-700 pt-12">
           Dashboard
         </h1>
 
-        <div className="bg-white p-6 rounded-lg shadow-md mb-8 max-w-md mx-auto">
+        <div className="mb-8 max-w-sm mx-auto">
           <form onSubmit={addProduct} className="flex gap-2">
             <input
               type="text"
@@ -119,14 +119,14 @@ function Dashboard() {
           {currentProducts.map((item) => (
             <div
               key={item.id}
-              className="bg-white p-4 rounded-lg shadow hover:shadow-md transition flex flex-col justify-between"
+              className="bg-white p-4 rounded-lg shadow hover:shadow-md transition flex flex-col justify-between items-center"
             >
               <h2 className="text-lg font-semibold mb-4">
                 {item.name || "No Name"}
               </h2>
               <button
                 onClick={() => deleteProduct(item.id)}
-                className="text-red-500 hover:bg-red-500 text-sm font-medium border border-red-500 rounded px-2 py-1 hover:text-white transition"
+                className="w-sm text-red-500 hover:bg-red-500 text-sm font-medium border border-red-500 rounded px-2 py-1 hover:text-white transition"
               >
                 Hapus
               </button>
@@ -138,7 +138,7 @@ function Dashboard() {
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50 hover:bg-indigo-600"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50"
           >
             Prev
           </button>
@@ -150,7 +150,7 @@ function Dashboard() {
               className={`px-4 py-2 rounded-lg ${
                 currentPage === page
                   ? "bg-blue-600 text-white font-bold"
-                  : "bg-white text-blue-600 border border-blue-500 cursor-pointer"
+                  : "bg-white text-blue-600 border border-blue-500"
               }`}
             >
               {page}
@@ -160,7 +160,7 @@ function Dashboard() {
           <button
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50 hover:bg-indigo-600"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50"
           >
             Next
           </button>
