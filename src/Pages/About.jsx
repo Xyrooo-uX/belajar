@@ -11,8 +11,7 @@ function About() {
     <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Bagian Hero / Atas */}
-      <div className='flex flex-col md:flex-row items-center justify-around min-h-screen px-10 md:px-20 py-20 gap-10'>
+        <div className='flex flex-col md:flex-row items-center justify-around min-h-screen px-10 md:px-20 py-20 gap-10'>
         <div className='flex justify-center items-center'>
           <img 
             src="cat.jpg" 

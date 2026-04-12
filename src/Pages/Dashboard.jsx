@@ -34,7 +34,7 @@ function Dashboard() {
 
     setProducts([newEntry, ...products]);
     setNewProductName("");
-      
+
     Swal.fire({
       title: "Berhasil!",
       text: "Produk ditambahkan ke daftar lokal",
@@ -126,7 +126,7 @@ function Dashboard() {
               </h2>
               <button
                 onClick={() => deleteProduct(item.id)}
-                className="w-sm text-red-500 hover:bg-red-500 text-sm font-medium border border-red-500 rounded px-2 py-1 hover:text-white transition"
+                className="w-s text-red-500 hover:bg-red-500 text-sm font-medium border border-red-500 rounded px-2 py-1 hover:text-white transition"
               >
                 Hapus
               </button>
