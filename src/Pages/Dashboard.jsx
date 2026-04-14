@@ -132,7 +132,7 @@ function Dashboard() {
 
              <h2 className="text-lg font-semibold mb-4">
                {item.data?.price || item.data?.Price || "-"}
-             </h2>
+             </h2>  
 
               <button
                 onClick={() => deleteProduct(item.id)}

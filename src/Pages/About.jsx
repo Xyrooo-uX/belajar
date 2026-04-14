@@ -33,64 +33,65 @@
           </div>
         </div>
 
-        <div className="w-full pb-20">
+        <div className="w-full pb-20">  
           
           <div className="flex overflow-x-auto gap-6 px-10 md:px-20 scrollbar-hide py-4">
             
             {/*foto*/}
             <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80 shadow-lg rounded-lg">
               <div className="relative bg-gray-100 aspect-[3/3] overflow-hidden rounded-lg">
-                <img src="cat.jpg" alt="Image 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-5  00" />
+                <img src="cat.jpg" alt="Image 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="mt-4">
                 <h3 className="text-xs uppercase tracking-widest font-medium p-3">Test 1</h3>
               </div>
             </div>
 
-            <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80">
+         <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80 shadow-lg rounded-lg">
               <div className="relative bg-gray-100 aspect-[3/3] overflow-hidden rounded-lg">
-                <img src="cat.jpg" alt="Image 2" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <img src="cat.jpg" alt="Image 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="mt-4">
-                <h3 className="text-xs uppercase tracking-widest font-medium">Test 2</h3>
-              </div>
-            </div>
-      
-            <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80">
-              <div className="relative bg-gray-100 aspect-[3/3] overflow-hidden rounded-lg">
-                <img src="cat.jpg" alt="Image 3" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <div className="mt-4">
-                <h3 className="text-xs uppercase tracking-widest font-medium">Test 3</h3>
+                <h3 className="text-xs uppercase tracking-widest font-medium p-3">Test 1</h3>
               </div>
             </div>
 
-            <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80">
+             <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80 shadow-lg rounded-lg">
               <div className="relative bg-gray-100 aspect-[3/3] overflow-hidden rounded-lg">
-                <img src="cat.jpg" alt="Image 3" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <img src="cat.jpg" alt="Image 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="mt-4">
-                <h3 className="text-xs uppercase tracking-widest font-medium">Test 4</h3>
+                <h3 className="text-xs uppercase tracking-widest font-medium p-3">Test 1</h3>
               </div>
             </div>
 
-                      <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80">
+             <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80 shadow-lg rounded-lg">
               <div className="relative bg-gray-100 aspect-[3/3] overflow-hidden rounded-lg">
-                <img src="cat.jpg" alt="Image 3" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <img src="cat.jpg" alt="Image 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="mt-4">
-                <h3 className="text-xs uppercase tracking-widest font-medium">Test 5</h3>
+                <h3 className="text-xs uppercase tracking-widest font-medium p-3">Test 1</h3>
               </div>
             </div>
 
-                      <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80">
+             <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80 shadow-lg rounded-lg">
               <div className="relative bg-gray-100 aspect-[3/3] overflow-hidden rounded-lg">
-                <img src="cat.jpg" alt="Image 3" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <img src="cat.jpg" alt="Image 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="mt-4">
-                <h3 className="text-xs uppercase tracking-widest font-medium">Test 6</h3>
+                <h3 className="text-xs uppercase tracking-widest font-medium p-3">Test 1</h3>
               </div>
             </div>
+
+             <div className="group cursor-pointer flex-shrink-0 w-64 md:w-80 shadow-lg rounded-lg">
+              <div className="relative bg-gray-100 aspect-[3/3] overflow-hidden rounded-lg">
+                <img src="cat.jpg" alt="Image 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <div className="mt-4">
+                <h3 className="text-xs uppercase tracking-widest font-medium p-3">Test 1</h3>
+              </div>
+            </div>  
+
             
           </div>
         </div>
