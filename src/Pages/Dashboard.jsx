@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 import Navbar from "../Components/Navbar";
 import Searchbar from "../Components/Searchbar";
+import toast from "react-hot-toast";
 
 function Dashboard() {
   const [products, setProducts] = useState([]);
@@ -16,12 +17,13 @@ function Dashboard() {
     axios
       .get("https://api.restful-api.dev/objects")
       .then((res) => {
-        setProducts(res.data);
+       setProducts(res.data);
       })
       .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+      console.log(err); 
+     toast.error("This didn't work.")
+});
+  }, [ search ]);
 
   const addProduct = (e) => {
     e.preventDefault();
@@ -29,15 +31,16 @@ function Dashboard() {
 
     const newEntry = { 
       id: "local-" + Date.now(), 
-      name: newProductName 
+      name: newProductName,
+      price: 0 
     };
 
-    setProducts([newEntry, ...products]);
+    setProducts([newEntry, ...  products]);
     setNewProductName("");
 
     Swal.fire({
       title: "Berhasil!",
-      text: "Produk ditambahkan ke daftar lokal",
+      text: "Produk ditambahkan ke daftar  lokal",
       icon: "success",
       timer: 1500,
       showConfirmButton: false
@@ -53,7 +56,7 @@ function Dashboard() {
       buttonsStyling: false
     });
 
-    swalWithBootstrapButtons.fire({
+    Swal.fire({
       title: "Apakah kamu yakin?",
       text: "Data akan di hapus!",
       icon: "warning",
@@ -64,7 +67,7 @@ function Dashboard() {
     }).then((result) => {
       if (result.isConfirmed) {
         setProducts(products.filter((item) => item.id !== id));
-        swalWithBootstrapButtons.fire("Berhasil!", "Data dihapus.", "success");
+        Swal.fire("Berhasil!", "Data dihapus.", "success");
       }
     });
   };
@@ -73,10 +76,12 @@ function Dashboard() {
     item.name?.toLowerCase().includes(search.toLowerCase())
   );
 
+
   const lastIndex = currentPage * postPerPage;
   const firstIndex = lastIndex - postPerPage;
   const currentProducts = filteredProducts.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(filteredProducts.length / postPerPage);
+
 
   const getGridColsClass = () => {
     switch (columns) {
@@ -124,6 +129,11 @@ function Dashboard() {
               <h2 className="text-lg font-semibold mb-4">
                 {item.name || "No Name"}
               </h2>
+
+             <h2 className="text-lg font-semibold mb-4">
+               {item.data?.price || item.data?.Price || "-"}
+             </h2>
+
               <button
                 onClick={() => deleteProduct(item.id)}
                 className="w-s text-red-500 hover:bg-red-500 text-sm font-medium border border-red-500 rounded px-2 py-1 hover:text-white transition"
@@ -138,7 +148,7 @@ function Dashboard() {
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50 cursor-pointer"
           >
             Prev
           </button>
@@ -150,7 +160,7 @@ function Dashboard() {
               className={`px-4 py-2 rounded-lg ${
                 currentPage === page
                   ? "bg-blue-600 text-white font-bold"
-                  : "bg-white text-blue-600 border border-blue-500"
+                  : "bg-white text-blue-600 border border-blue-500 cursor-pointer hover:bg-blue-100 transition"
               }`}
             >
               {page}
@@ -160,7 +170,7 @@ function Dashboard() {
           <button
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50 cursor-pointer"
           >
             Next
           </button>
